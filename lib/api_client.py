@@ -7,9 +7,12 @@ class ApiClient(object):
     self._api_token = api_token
     
   def send_data(self, data):
-    ping = { 'ids': data }
-    resp = requests.post(self._url, data=ping,
-      headers={ 'Authorization': 'Token token={}'.format(self._api_token) })
+    ping = { "ids": data }
+    resp = requests.post(self._url, data=json.dumps(ping),
+      headers={
+        'Authorization': 'Token token={}'.format(self._api_token),
+        'Content-Type': 'application/json'
+      })
     if resp.status_code != 200:
       raise Exception('Failure! attempting to hit: {} with {} but got a {}'.format(self._url, ping, resp.status_code))
 
