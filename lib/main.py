@@ -9,7 +9,7 @@ from api_client import ApiClient
 
 session_tracker = SessionTracker()
 
-endpoint = 'http://osc-backend.herokuapp.com/api/ping'
+endpoint = 'https://osc-backend.herokuapp.com/api/ping'
 api_token = '24ee441f6823271610ea6c4e57d8541b'
 
 def fetch_data(thread_name, delay):
