@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+pushd $(dirname $0) &> /dev/null
+  PWD=$(pwd)
+popd &> /dev/null
+
+PYTHON_BIN=$(which python)
+
+$PYTHON_BIN $PWD/lib/main.py
+
