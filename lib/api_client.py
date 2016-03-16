@@ -1,3 +1,5 @@
+import requests
+import json
 
 class ApiClient(object):
   def __init__(self, url, api_token):
@@ -6,8 +8,8 @@ class ApiClient(object):
     
   def send_data(self, data):
     ping = { 'ids': data }
-    resp = requests.put(self._url, json=ping, 
-      headers={ 'Authorization': 'Token token={}'.format(api_token) })
+    resp = requests.post(self._url, data=ping,
+      headers={ 'Authorization': 'Token token={}'.format(self._api_token) })
     if resp.status_code != 200:
-      raise ApiError('Failure! {}'.format(resp.status_code))
+      raise Exception('Failure! attempting to hit: {} with {} but got a {}'.format(self._url, ping, resp.status_code))
 

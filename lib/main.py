@@ -1,5 +1,4 @@
 import serial
-import requests
 import thread
 import time
 import sys
@@ -18,7 +17,7 @@ def fetch_data(thread_name, delay):
 
   while 1:
     time.sleep(delay)
-    line = ser.readLine()
+    line = ser.readline()
     session_tracker.update(line.strip())
 
 def report_data(thread_name, delay):
@@ -26,11 +25,12 @@ def report_data(thread_name, delay):
 
   while 1:
     time.sleep(delay)
-    api_client.send_data(session_tracker.get_ids())
+    if len(session_tracker.get_ids()) > 0:
+      api_client.send_data(session_tracker.get_ids())
 
 try:
-  thread.start_new_thread(fetch_data, ('fetch data', 500))
-  thread.start_new_thread(report_data, ('report data', 1000))
+  thread.start_new_thread(fetch_data, ('fetch data', 1))
+  thread.start_new_thread(report_data, ('report data', 2))
 except:
   print "Unable to start thread", sys.exc_info()
 
