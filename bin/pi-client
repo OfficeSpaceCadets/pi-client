@@ -1,10 +1,10 @@
 #!/bin/bash -e
 
-pushd $(dirname $0) &> /dev/null
-  PWD=$(dirname $(pwd))
+pushd $(dirname $(dirname $0)) &> /dev/null
+  BASE_DIR=$(pwd)
 popd &> /dev/null
 
 PYTHON_BIN=$(which python)
 
-$PYTHON_BIN $PWD/lib/main.py
+$PYTHON_BIN $BASE_DIR/lib/main.py
 
