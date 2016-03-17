@@ -1,5 +1,6 @@
 import requests
 import json
+import logging
 
 class ApiClient(object):
   def __init__(self):
@@ -19,4 +20,5 @@ class ApiClient(object):
     if resp.status_code > 201:
       message = 'Failure! attempting to hit: {} with {} but got a {}'.format(self._url, ping, resp.status_code)
       raise Exception(message)
-
+    else:
+      logging.info('Successfully sent to server')

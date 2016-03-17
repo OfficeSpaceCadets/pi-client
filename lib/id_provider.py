@@ -1,14 +1,13 @@
 import serial
 
 class IdProvider(object):
-
   def __init__(self):
-    port = '/dev/ttyACM0'
-    baud_rate = 9600
-    self._ser = serial.Serial(port, baud_rate)
+    self._port = '/dev/ttyACM0'
+    self._baud_rate = 9600
 
   def fetch_ids(self):
-    line = self._ser.readline()
+    ser = serial.Serial(self._port, self._baud_rate)
+    line = ser.readline()
     return line.split(':')
 
 
