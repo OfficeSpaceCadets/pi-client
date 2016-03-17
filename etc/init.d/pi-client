@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ### BEGIN INIT INFO
 # Provides: pi-client
 # Required-Start: $remote_fs $syslog $network
@@ -29,14 +29,14 @@ case $1 in
                 /usr/local/pi-client/bin/pi_client >> /var/log/pi-client/pi-client.log &
         ;;
         status)
-                ps -ef | grep pi_clien[t] 
+                ps -ef | grep pi_clien[t]  &> /dev/null
                 running=$?
-                if [ "$running" == "0" ]
+                if [ $running -eq 1 ]
                 then
                   echo 'pi-client is stopped'
                 fi
 
-                if [ "$running" == "1" ]
+                if [ $running -eq 0 ]
                 then
                   echo 'pi-client is running'
                 fi
