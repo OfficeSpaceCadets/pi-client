@@ -26,7 +26,7 @@ case $1 in
                 pkill -P $(pgrep pi_client)
         ;;
         start)
-                /bin/bash /usr/local/pi-client/bin/pi-client >> /var/log/pi-client/pi-client.log
+                /bin/bash /usr/local/pi-client/bin/pi-client >> /var/log/pi-client/pi-client.log &
         ;;
         *)
                 usage
