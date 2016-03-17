@@ -26,15 +26,15 @@ case $1 in
                 kill $(ps -ef | grep pi_clien[t] | awk '{print $2}')
         ;;
         start)
-                /usr/local/pi-client/bin/pi-client >> /var/log/pi-client/pi-client.log &
+                /usr/local/pi-client/bin/pi_client >> /var/log/pi-client/pi-client.log &
         ;;
         status)
-                ps -ef | grep pi-clien[t] 
+                ps -ef | grep pi_clien[t] 
                 running="$?"
-                if [ $running == "0" ]
-                then
-                  echo 'pi-client is stopped'
-                fi
+                #if [ $running == "0" ]
+                #then
+                  #echo 'pi-client is stopped'
+                #fi
 
                 if [ $running == "1" ]
                 then
