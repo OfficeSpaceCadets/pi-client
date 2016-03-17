@@ -1,0 +1,36 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: pi-client
+# Required-Start: $remote_fs $syslog $network
+# Required-Stop: $remote_fs $syslog $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Launch the pi client
+# Description: Start the service that will pull from the serial port and push updates to the server REST API
+### END INIT INFO
+
+
+usage() {
+    echo "----------------------------------------------"
+    echo "Usage: pi-client (stop|start)"
+    echo "----------------------------------------------"
+    exit 2
+}
+
+if [ -z $1 ]; then
+    usage
+fi
+
+case $1 in
+        stop)
+                pkill -P $(pgrep pi_client)
+        ;;
+        start)
+                /bin/bash /usr/local/pi-client/bin/pi_client > /var/log/pi_client/pi_client.log
+        ;;
+        *)
+                usage
+        ;;
+esac
+
+exit 0
