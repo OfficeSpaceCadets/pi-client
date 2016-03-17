@@ -13,8 +13,9 @@ class ApiClient(object):
       }
     
   def send_data(self, data):
+    ping = json.dumps({ "ids": data })
     resp = requests.post(self._url, 
-      data=json.dumps({ "ids": data }),
+      data=ping,
       headers=self._headers)
 
     if resp.status_code > 201:
