@@ -4,7 +4,7 @@ import logging
 
 class ApiClient(object):
   def __init__(self):
-    self._urL = 'https://osc-backend.herokuapp.com/api/ping'
+    self._url = 'https://osc-backend.herokuapp.com/api/ping'
     self._api_token = '24ee441f6823271610ea6c4e57d8541b'
 
     self._headers = {
