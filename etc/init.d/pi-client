@@ -30,14 +30,15 @@ case $1 in
         ;;
         status)
                 ps -ef | grep pi-clien[t] 
-                if [ $! == 0 ]
-                then
-                  echo 'pi-client is running'
-                fi
-
-                if [ $! != 0 ]
+                running="$?"
+                if [ $running == "0" ]
                 then
                   echo 'pi-client is stopped'
+                fi
+
+                if [ $running == "1" ]
+                then
+                  echo 'pi-client is running'
                 fi
         ;;
         *)
