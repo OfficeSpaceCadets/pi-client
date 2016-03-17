@@ -12,7 +12,7 @@
 
 usage() {
     echo "----------------------------------------------"
-    echo "Usage: pi-client (stop|start)"
+    echo "Usage: pi-client (stop|start|status)"
     echo "----------------------------------------------"
     exit 2
 }
@@ -23,10 +23,22 @@ fi
 
 case $1 in
         stop)
-                pkill -P $(pgrep pi_client)
+                kill $(ps -ef | grep pi_clien[t] | awk '{print $2}')
         ;;
         start)
                 /usr/local/pi-client/bin/pi-client >> /var/log/pi-client/pi-client.log &
+        ;;
+        status)
+                ps -ef | grep pi-clien[t] 
+                if [ $! == 0 ]
+                then
+                  echo 'pi-client is running'
+                fi
+
+                if [ $! != 0 ]
+                then
+                  echo 'pi-client is stopped'
+                fi
         ;;
         *)
                 usage
