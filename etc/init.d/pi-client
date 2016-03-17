@@ -1,4 +1,4 @@
-t st#!/bin/sh
+#!/bin/sh
 ### BEGIN INIT INFO
 # Provides: pi-client
 # Required-Start: $remote_fs $syslog $network
