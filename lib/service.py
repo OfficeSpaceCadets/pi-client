@@ -19,7 +19,7 @@ class Service(object):
 
     try:
       thread.start_new_thread(self._data_receiver.process, ('data receiver', 1))
-      thread.start_new_thread(self._data_sender.process, ('data sender', 1))
+      thread.start_new_thread(self._data_sender.process, ('data sender', 2))
     except:
       print "Unable to start thread", sys.exc_info()
 
