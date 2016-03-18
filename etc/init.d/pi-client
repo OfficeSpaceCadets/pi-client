@@ -26,7 +26,7 @@ case $1 in
                 kill $(ps -ef | grep pi_clien[t] | awk '{print $2}')
         ;;
         start)
-                /usr/local/pi-client/bin/pi_client >> /var/log/pi-client/pi-client.log &
+                /usr/local/pi-client/bin/pi_client &> /dev/null &
         ;;
         status)
                 ps -ef | grep pi_clien[t]  &> /dev/null
