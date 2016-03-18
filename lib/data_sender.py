@@ -20,6 +20,7 @@ class DataSender(object):
     while 1:
       if len(self._data_holder.get_data()) > 0:
         self._send()
+        self._data_holder.set_data([])
 
       time.sleep(delay)
 
