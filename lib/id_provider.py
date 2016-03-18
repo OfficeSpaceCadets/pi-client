@@ -7,7 +7,7 @@ class IdProvider(object):
 
   def fetch_ids(self):
     ser = serial.Serial(self._port, self._baud_rate)
-    line = ser.readline()
+    line = ser.readline().rstrip()
     return line.split(':')
 
 
