@@ -9,6 +9,7 @@ install:
 	cp etc/init.d/pi-client /etc/init.d/pi-client
 	chmod +x /usr/local/pi-client/bin/*
 	chmod +x /etc/init.d/pi-client
+	update-rc.d pi-client defaults 99
 
 uninstall:
 	rm -fR /usr/local/pi-client
